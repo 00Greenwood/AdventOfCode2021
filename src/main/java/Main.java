@@ -2,20 +2,30 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
+        // Create an object for each Day.
+        Vector<Day> days = new Vector<Day>();
+        days.add(new DayOne());
+
         Vector<Thread> threads = new Vector<Thread>();
         // Create a thread for each day.
-        threads.add(new Thread(new DayZero()));
-        // Start each thread.
-        for (Thread thread: threads) {
+        for (Day day: days) {
+            Thread thread = new Thread(day);
             thread.start();
+            threads.add(thread);
         }
+
         // Wait for each thread to finish.
         for (Thread thread: threads) {
             try {
                 thread.join();
             } catch (InterruptedException e) {
-                System.out.println(e);
+                System.out.println("An error occurred.");
+                e.printStackTrace();
             }
+        }
+
+        for (Day day: days) {
+            day.printSolutions();
         }
     }
 }
