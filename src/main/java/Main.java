@@ -1,12 +1,13 @@
-import java.util.*;
+import java.util.Vector;
 
 public class Main {
     public static void main(String[] args) {
         // Create an object for each Day.
         Vector<Day> days = new Vector<Day>();
         days.add(new DayOne());
+        days.add(new DayTwo());
 
-        Vector<Thread> threads = new Vector<Thread>();
+        Vector<Thread> threads = new Vector<>();
         // Create a thread for each day.
         for (Day day: days) {
             Thread thread = new Thread(day);

@@ -4,9 +4,14 @@ import java.util.Scanner;
 import java.util.Vector;
 
 public class DayOne extends Day {
-    private String test_input = "199\n200\n208\n210\n200\n207\n240\n269\n260\n263";
+
+    public DayOne() {
+        super("1");
+    }
 
     private Vector<Integer> getTestInput() {
+        String test_input = "199\n200\n208\n210\n200\n207\n240\n269\n260\n263";
+
         Vector<Integer> depths = new Vector<>();
         for (String number : test_input.split("\n")) {
             depths.add(Integer.valueOf(number));
@@ -43,8 +48,8 @@ public class DayOne extends Day {
     private Integer calculateSumIncreases(Vector<Integer> depths) {
         Integer count = 0;
         for (int i = 0; i < depths.size() - 3; i++) {
-            Integer first = depths.get(i) + depths.get(i + 1) + depths.get(i + 2);
-            Integer second = depths.get(i + 1) + depths.get(i + 2) + depths.get(i + 3);
+            int first = depths.get(i) + depths.get(i + 1) + depths.get(i + 2);
+            int second = depths.get(i + 1) + depths.get(i + 2) + depths.get(i + 3);
             if (second > first) {
                 count++;
             }
