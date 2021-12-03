@@ -1,10 +1,10 @@
 public abstract class Day implements Runnable {
-    protected String solution_one;
-    protected String solution_two;
+    protected Integer solution_one = 0;
+    protected Integer solution_two = 0;
 
     private String id;
 
-    public Day(String id){
+    public Day(String id) {
         this.id = id;
     }
 

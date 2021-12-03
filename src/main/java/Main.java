@@ -6,6 +6,7 @@ public class Main {
         Vector<Day> days = new Vector<Day>();
         days.add(new DayOne());
         days.add(new DayTwo());
+        days.add(new DayThree());
 
         Vector<Thread> threads = new Vector<>();
         // Create a thread for each day.

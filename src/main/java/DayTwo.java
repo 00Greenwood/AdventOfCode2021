@@ -65,23 +65,19 @@ public class DayTwo extends Day {
     }
 
     public void runSolutionOneTest() {
-        Vector<Pair<String, Integer>> directions = getTestInput();
-        calculateDistance(directions);
+        Integer distance = calculateDistance(getTestInput());
     }
 
     public void runSolutionOne() {
-        Vector<Pair<String, Integer>> directions = getInput();
-        solution_one = String.valueOf(calculateDistance(directions));
+        solution_one = calculateDistance(getInput());
     }
 
     public void runSolutionTwoTest() {
-        Vector<Pair<String, Integer>> directions = getTestInput();
-        calculateDistanceWithAim(directions);
+        Integer distance_with_aim = calculateDistanceWithAim(getTestInput());
     }
 
     public void runSolutionTwo() {
-        Vector<Pair<String, Integer>> directions = getInput();
-        solution_two = String.valueOf(calculateDistanceWithAim(directions));
+        solution_two = calculateDistanceWithAim(getInput());
     }
 
 

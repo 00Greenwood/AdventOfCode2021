@@ -58,23 +58,19 @@ public class DayOne extends Day {
     }
 
     public void runSolutionOneTest() {
-        Vector<Integer> depths = getTestInput();
-        calculateIncreases(depths);
+        Integer number_of_increases = calculateIncreases(getTestInput());
     }
 
     public void runSolutionOne() {
-        Vector<Integer> depths = getInput();
-        solution_one = String.valueOf(calculateIncreases(depths));
+        solution_one = calculateIncreases(getInput());
     }
 
     public void runSolutionTwoTest() {
-        Vector<Integer> depths = getTestInput();
-        calculateSumIncreases(depths);
+        Integer number_of_sum_increases = calculateSumIncreases(getTestInput());
     }
 
     public void runSolutionTwo() {
-        Vector<Integer> depths = getInput();
-        solution_two = String.valueOf(calculateSumIncreases(depths));
+        solution_two = calculateSumIncreases(getInput());
     }
 
 
