@@ -22,10 +22,15 @@ public abstract class Day implements Runnable {
 
     @Override
     public void run() {
-        runSolutionOneTest();
-        runSolutionOne();
-        runSolutionTwoTest();
-        runSolutionTwo();
+        try {
+            runSolutionOneTest();
+            runSolutionOne();
+            runSolutionTwoTest();
+            runSolutionTwo();
+        } catch (Exception e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
     }
 
 
