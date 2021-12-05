@@ -6,4 +6,8 @@ public class Pair<T, U> {
         this.first = first;
         this.second = second;
     }
+
+    public boolean equals(Pair<T, U> pair) {
+        return first.equals(pair.first) && second.equals(pair.second);
+    }
 }
