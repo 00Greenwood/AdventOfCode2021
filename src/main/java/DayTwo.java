@@ -3,7 +3,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.Vector;
 
-public class DayTwo extends Day {
+public class DayTwo extends Day<Integer> {
 
     public DayTwo() {
         super("2");

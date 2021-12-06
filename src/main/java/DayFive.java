@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Vector;
 
-public class DayFive extends Day {
+public class DayFive extends Day<Integer> {
 
     public DayFive() {
         super("5");

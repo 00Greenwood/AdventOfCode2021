@@ -1,6 +1,8 @@
-public abstract class Day implements Runnable {
-    protected Integer solution_one = 0;
-    protected Integer solution_two = 0;
+import java.math.BigInteger;
+
+public abstract class Day<T> implements Runnable {
+    protected T solution_one;
+    protected T solution_two;
 
     private String id;
 
