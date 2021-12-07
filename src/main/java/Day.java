@@ -1,5 +1,3 @@
-import java.math.BigInteger;
-
 public abstract class Day<T> implements Runnable {
     protected T solution_one;
     protected T solution_two;
