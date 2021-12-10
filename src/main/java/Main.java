@@ -4,6 +4,7 @@ public class Main {
     public static void main(String[] args) {
         // Create an object for each Day.
         Vector<Day> days = new Vector<Day>();
+        days.add(new DayZero());
         days.add(new DayOne());
         days.add(new DayTwo());
         days.add(new DayThree());
@@ -13,6 +14,7 @@ public class Main {
         days.add(new DaySeven());
         days.add(new DayEight());
         days.add(new DayNine());
+        days.add(new DayTen());
 
         Vector<Thread> threads = new Vector<>();
         // Create a thread for each day.
