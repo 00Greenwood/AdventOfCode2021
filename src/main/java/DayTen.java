@@ -3,16 +3,10 @@ import java.io.FileNotFoundException;
 import java.math.BigInteger;
 import java.util.*;
 
-class SyntaxComplete extends Exception {
-}
-
-class SyntaxError extends Exception {
-}
-
 public class DayTen extends Day<BigInteger> {
 
     public DayTen() {
-        super("0");
+        super("10");
     }
 
     private Vector<Map<Integer, Character>> getTestInput() {
@@ -26,7 +20,8 @@ public class DayTen extends Day<BigInteger> {
                 {<[[]]>}<{[{[{[]{()[[[]
                 [<(<(<(<{}))><([]([]()
                 <{([([[(<>()){}]>(<<{{
-                <{([{{}}[<[[[<>{}]]]>[]]""";
+                <{([{{}}[<[[[<>{}]]]>[]]
+                """;
         Vector<Map<Integer, Character>> syntax_lines = new Vector<>();
         for (String line : test_input.split("\n")) {
             Map<Integer, Character> map = new TreeMap<>();
@@ -60,7 +55,7 @@ public class DayTen extends Day<BigInteger> {
         return syntax_lines;
     }
 
-    private void removeIfComplete(Map<Integer, Character> syntax, Integer current_key, Integer next_key, Character to_match) throws SyntaxComplete, SyntaxError {
+    private void removeCaseIfComplete(Map<Integer, Character> syntax, Integer current_key, Integer next_key, Character to_match) throws SyntaxComplete, SyntaxError {
         String closing_syntax = "\\)|\\]|\\}|\\>";
         if (syntax.get(next_key).toString().matches(closing_syntax)) {
             if (syntax.get(next_key).equals(to_match)) {
@@ -89,12 +84,7 @@ public class DayTen extends Day<BigInteger> {
                     Integer current_key = keys.get(index);
                     Integer next_key = keys.get(index + 1);
                     try {
-                        switch (syntax.get(current_key)) {
-                            case '(' -> removeIfComplete(syntax, current_key, next_key, ')');
-                            case '[' -> removeIfComplete(syntax, current_key, next_key, ']');
-                            case '{' -> removeIfComplete(syntax, current_key, next_key, '}');
-                            case '<' -> removeIfComplete(syntax, current_key, next_key, '>');
-                        }
+                        removeSyntaxIfComplete(syntax, current_key, next_key);
                     } catch (SyntaxComplete e) {
                         break;
                     } catch (SyntaxError e) {
@@ -112,6 +102,15 @@ public class DayTen extends Day<BigInteger> {
         } catch (IndexOutOfBoundsException ignored) {
         }
         return 0;
+    }
+
+    private void removeSyntaxIfComplete(Map<Integer, Character> syntax, Integer current_key, Integer next_key) throws SyntaxComplete, SyntaxError {
+        switch (syntax.get(current_key)) {
+            case '(' -> removeCaseIfComplete(syntax, current_key, next_key, ')');
+            case '[' -> removeCaseIfComplete(syntax, current_key, next_key, ']');
+            case '{' -> removeCaseIfComplete(syntax, current_key, next_key, '}');
+            case '<' -> removeCaseIfComplete(syntax, current_key, next_key, '>');
+        }
     }
 
     private BigInteger calculateMiddleCompletionScore(Vector<Map<Integer, Character>> syntax_lines) {
@@ -134,12 +133,7 @@ public class DayTen extends Day<BigInteger> {
                     Integer current_key = keys.get(index);
                     Integer next_key = keys.get(index + 1);
                     try {
-                        switch (syntax.get(current_key)) {
-                            case '(' -> removeIfComplete(syntax, current_key, next_key, ')');
-                            case '[' -> removeIfComplete(syntax, current_key, next_key, ']');
-                            case '{' -> removeIfComplete(syntax, current_key, next_key, '}');
-                            case '<' -> removeIfComplete(syntax, current_key, next_key, '>');
-                        }
+                        removeSyntaxIfComplete(syntax, current_key, next_key);
                     } catch (SyntaxComplete e) {
                         break;
                     }

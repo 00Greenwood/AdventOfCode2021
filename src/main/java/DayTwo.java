@@ -10,7 +10,14 @@ public class DayTwo extends Day<Integer> {
     }
 
     private Vector<Pair<String, Integer>> getTestInput() {
-        String test_input = "forward 5\ndown 5\nforward 8\nup 3\ndown 8\nforward 2";
+        String test_input = """
+                forward 5
+                down 5
+                forward 8
+                up 3
+                down 8
+                forward 2
+                """;
         Vector<Pair<String, Integer>> directions = new Vector<>();
         for (String direction : test_input.split("\n")) {
             String[] split_direction = direction.split(" ");

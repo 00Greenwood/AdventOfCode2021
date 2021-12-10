@@ -72,12 +72,13 @@ public class DayEight extends Day<Integer> {
         Vector<Integer> numbers = new Vector<>();
         for (String line : lines) {
             String[] split_string = line.split(" \\| ");
-            Map<Integer, String> encode_map = createEncodeMap(split_string[0]);
+            Map<Integer, Set<Character>> encode_map = createEncodeMap(split_string[0]);
             StringBuilder display = new StringBuilder();
-            for (String digit : split_string[1].split(" ")) {
-                for (Map.Entry<Integer, String> entry : encode_map.entrySet()) {
-                    if (digit.length() == entry.getValue().length() &&
-                            digit.matches(createContainsRegex(entry.getValue()))
+            for (String string_digit : split_string[1].split(" ")) {
+                Set<Character> digit = createDigit(string_digit);
+                for (Map.Entry<Integer, Set<Character>> entry : encode_map.entrySet()) {
+                    if (digit.size() == entry.getValue().size() &&
+                            digit.containsAll(entry.getValue())
                     ) {
                         display.append(entry.getKey());
                         break;
@@ -90,43 +91,51 @@ public class DayEight extends Day<Integer> {
         return numbers;
     }
 
-    private Map<Integer, String> createEncodeMap(String all_digits) {
-        Map<Integer, String> encode_map = new HashMap<>();
+    private Set<Character> createDigit(String digit) {
+        Set<Character> set = new TreeSet<>();
+        char[] charArray = digit.toCharArray();
+        for (char ch : charArray) {
+            set.add(ch);
+        }
+        return set;
+    }
+
+    private Map<Integer, Set<Character>> createEncodeMap(String all_digits) {
+        Map<Integer,  Set<Character>> encode_map = new HashMap<>();
 
         String[] digits = all_digits.split(" ");
         // First iteration, find 1, 4, 7 and 8
         for (String digit : digits) {
             switch (digit.length()) {
-                case 2 -> encode_map.put(1, digit);
-                case 4 -> encode_map.put(4, digit);
-                case 3 -> encode_map.put(7, digit);
-                case 7 -> encode_map.put(8, digit);
+                case 2 -> encode_map.put(1, createDigit(digit));
+                case 4 -> encode_map.put(4, createDigit(digit));
+                case 3 -> encode_map.put(7, createDigit(digit));
+                case 7 -> encode_map.put(8, createDigit(digit));
             }
         }
 
-        String seven_regex = createContainsRegex(encode_map.get(7));
-        String four_regex = createContainsRegex(encode_map.get(4));
-        String one = encode_map.get(1);
-        String one_regex = MessageFormat.format("{0}|{1}", one.charAt(0), one.charAt(1));
-        String four_minus_one = encode_map.get(4).replaceAll(one_regex, "");
-        String four_minus_one_regex = createContainsRegex(four_minus_one);
+        Set<Character> seven = encode_map.get(7);
+        Set<Character> four = encode_map.get(4);
+        Set<Character> four_minus_one = new TreeSet<>(encode_map.get(4));
+        four_minus_one.removeAll(encode_map.get(1));
 
         // Second iteration, find 0, 2, 3, 5, 6 and 9
-        for (String digit : digits) {
-            switch (digit.length()) {
+        for (String string_digit : digits) {
+            Set<Character> digit = createDigit(string_digit);
+            switch (string_digit.length()) {
                 case 5 -> {
-                    if (digit.matches(seven_regex)) {
+                    if (digit.containsAll(seven)) {
                         encode_map.put(3, digit);
-                    } else if (digit.matches(four_minus_one_regex)) {
+                    } else if (digit.containsAll(four_minus_one)) {
                         encode_map.put(5, digit);
                     } else {
                         encode_map.put(2, digit);
                     }
                 }
                 case 6 -> {
-                    if (digit.matches(four_regex)) {
+                    if (digit.containsAll(four)) {
                         encode_map.put(9, digit);
-                    } else if (digit.matches(seven_regex)) {
+                    } else if (digit.containsAll(seven)) {
                         encode_map.put(0, digit);
                     } else {
                         encode_map.put(6, digit);
@@ -135,15 +144,6 @@ public class DayEight extends Day<Integer> {
             }
         }
         return encode_map;
-    }
-
-    private String createContainsRegex(String input) {
-        StringBuilder output = new StringBuilder();
-        for (char ch : input.toCharArray()) {
-            output.append("(?=.*").append(ch).append(")");
-        }
-        output.append(".+");
-        return output.toString();
     }
 
     public void runSolutionOneTest() {
