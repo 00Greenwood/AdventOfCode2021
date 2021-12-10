@@ -10,7 +10,18 @@ public class DayOne extends Day<Integer> {
     }
 
     private Vector<Integer> getTestInput() {
-        String test_input = "199\n200\n208\n210\n200\n207\n240\n269\n260\n263";
+        String test_input = """
+        199
+        200
+        208
+        210
+        200
+        207
+        240
+        269
+        260
+        263
+        """;
 
         Vector<Integer> depths = new Vector<>();
         for (String number : test_input.split("\n")) {

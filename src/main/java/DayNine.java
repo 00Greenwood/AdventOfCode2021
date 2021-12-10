@@ -10,7 +10,12 @@ public class DayNine extends Day<Integer> {
     }
 
     private Vector<Vector<Integer>> getTestInput() {
-        String test_input = "2199943210\n3987894921\n9856789892\n8767896789\n9899965678";
+        String test_input = """
+                2199943210
+                3987894921
+                9856789892
+                8767896789
+                9899965678""";
         Vector<Vector<Integer>> row = new Vector<>();
         for (String line : test_input.split("\n")) {
             Vector<Integer> column = new Vector<>();
