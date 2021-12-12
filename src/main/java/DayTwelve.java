@@ -103,100 +103,52 @@ public class DayTwelve extends Day<Integer> {
         return new SmallCave(id);
     }
 
-    private Integer findAllSmallCavePaths(Map<String, Cave> caves) {
-        Vector<Vector<Cave>> paths = new Vector<>();
+    private Integer findAllSmallCavePaths(Map<String, Cave> caves, Boolean allow_two_visits) {
+        Vector<CavePath> paths = new Vector<>();
         Cave start = caves.get("start");
-        Vector<Cave> start_path = new Vector<>();
-        generateSmallCavePath(start, start_path, paths);
+        CavePath start_path = new CavePath();
+        generateSmallCavePath(start, start_path, paths, allow_two_visits);
         return paths.size();
     }
 
-    private void generateSmallCavePath(Cave current_cave, Vector<Cave> current_path, Vector<Vector<Cave>> paths) {
+    private void generateSmallCavePath(Cave current_cave, CavePath current_path, Vector<CavePath> paths, Boolean allow_two_visits) {
+        if (!current_path.add(current_cave)) {
+            return; // Add failed, skip!
+        }
+
         if (current_cave.getId().equals("end")) {
-            current_path.add(current_cave);
             paths.add(current_path);
             return; // End reached.
         }
 
-        if (current_cave.isSmall()) {
-            for (Cave previous_cave : current_path) {
-                if (previous_cave.equals(current_cave)) {
-                    return; // Only visit small cases once.
-                }
-            }
+        if (!current_path.isValid(allow_two_visits)) {
+            return; // Path no longer valid.
         }
 
-        current_path.add(current_cave);
         for (Cave next_cave : current_cave.getLinks()) {
-            Vector<Cave> next_path = new Vector<>(current_path);
-            generateSmallCavePath(next_cave, next_path, paths);
-        }
-    }
-
-    private Integer findAllSmallCavePathsWithTwoVisits(Map<String, Cave> caves) {
-        Vector<Vector<Cave>> paths = new Vector<>();
-        Cave start = caves.get("start");
-        Vector<Cave> start_path = new Vector<>();
-        generateSmallCavePathWithTwoVists(start, start_path, paths);
-        return paths.size();
-    }
-
-    private void generateSmallCavePathWithTwoVists(Cave current_cave, Vector<Cave> current_path, Vector<Vector<Cave>> paths) {
-        if (current_cave.getId().equals("end")) {
-            current_path.add(current_cave);
-            paths.add(current_path);
-            return; // End reached.
-        }
-
-        if (current_cave.getId().equals("start")) {
-            for (Cave previous_cave : current_path) {
-                if (previous_cave.equals(current_cave)) {
-                    return; // Only the start once.
-                }
-            }
-        }
-
-        if (current_cave.isSmall()) {
-            int total_visits = 1;
-            Set<Cave> small_caves = new HashSet<>();
-            small_caves.add(current_cave);
-            for (Cave previous_cave : current_path) {
-                if (previous_cave.isSmall()) {
-                    small_caves.add(previous_cave);
-                    total_visits++;
-                }
-            }
-
-            if (total_visits > small_caves.size() + 1) {
-                return; // Second visit used previously;
-            }
-        }
-
-        current_path.add(current_cave);
-        for (Cave next_cave : current_cave.getLinks()) {
-            Vector<Cave> next_path = new Vector<>(current_path);
-            generateSmallCavePathWithTwoVists(next_cave, next_path, paths);
+            CavePath next_path = current_path.copy();
+            generateSmallCavePath(next_cave, next_path, paths, allow_two_visits);
         }
     }
 
     public void runSolutionOneTest() {
-        Integer number_of_paths = findAllSmallCavePaths(getSmallTestInput());
-        number_of_paths = findAllSmallCavePaths(getMediumTestInput());
-        number_of_paths = findAllSmallCavePaths(getBigTestInput());
+        Integer number_of_paths = findAllSmallCavePaths(getSmallTestInput(), false);
+        number_of_paths = findAllSmallCavePaths(getMediumTestInput(), false);
+        number_of_paths = findAllSmallCavePaths(getBigTestInput(), false);
     }
 
     public void runSolutionOne() {
-        solution_one = findAllSmallCavePaths(getInput());
+        solution_one = findAllSmallCavePaths(getInput(), false);
     }
 
     public void runSolutionTwoTest() {
-        Integer number_of_paths = findAllSmallCavePathsWithTwoVisits(getSmallTestInput());
-        number_of_paths = findAllSmallCavePathsWithTwoVisits(getMediumTestInput());
-        number_of_paths = findAllSmallCavePathsWithTwoVisits(getBigTestInput());
+        Integer number_of_paths = findAllSmallCavePaths(getSmallTestInput(), true);
+        number_of_paths = findAllSmallCavePaths(getMediumTestInput(), true);
+        number_of_paths = findAllSmallCavePaths(getBigTestInput(), true);
     }
 
     public void runSolutionTwo() {
-        solution_two = findAllSmallCavePathsWithTwoVisits(getInput());
+        solution_two = findAllSmallCavePaths(getInput(), true);
     }
 
 
