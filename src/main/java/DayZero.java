@@ -10,9 +10,10 @@ public class DayZero extends Day<Integer> {
     }
 
     private Vector<Integer> getTestInput() {
-        Vector<Integer> test_input = new Vector<>();
-        test_input.add(1);
-        return test_input;
+        String test_input = "1";
+        Vector<Integer> inputs = new Vector<>();
+        inputs.add(Integer.valueOf(test_input));
+        return inputs;
     }
 
     private Vector<Integer>  getInput() {
