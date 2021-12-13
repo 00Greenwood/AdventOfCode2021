@@ -17,6 +17,7 @@ public class Main {
         days.add(new DayTen());
         days.add(new DayEleven());
         days.add(new DayTwelve());
+        days.add(new DayThirteen());
 
         Vector<Thread> threads = new Vector<>();
         // Create a thread for each day.
