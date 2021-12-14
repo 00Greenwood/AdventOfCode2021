@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.*;
+import java.util.Scanner;
+import java.util.Vector;
 
 public class DayThirteen extends Day<Integer> {
 

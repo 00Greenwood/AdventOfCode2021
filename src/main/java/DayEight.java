@@ -1,6 +1,5 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.text.MessageFormat;
 import java.util.*;
 
 public class DayEight extends Day<Integer> {
