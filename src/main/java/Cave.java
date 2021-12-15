@@ -23,8 +23,4 @@ public abstract class Cave {
     public String getId() {
         return id;
     }
-
-    public boolean equals(Cave cave) {
-        return id.equals(cave.id);
-    }
 }
