@@ -1,11 +1,15 @@
+package Days;
+
+import Utility.Pair;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 import java.util.concurrent.LinkedBlockingDeque;
 
-public class DayNine extends Day<Integer> {
+public class Day9 extends Day<Integer> {
 
-    public DayNine() {
+    public Day9() {
         super("9");
     }
 
@@ -30,7 +34,7 @@ public class DayNine extends Day<Integer> {
     private Vector<Vector<Integer>> getInput() {
         Vector<Vector<Integer>> row = new Vector<>();
         try {
-            File file = new File("src/main/resources/DayNine.txt");
+            File file = new File("src/main/resources/Day"+ id +".txt");
             Scanner scanner = new Scanner(file);
             while (scanner.hasNextLine()) {
                 Vector<Integer> column = new Vector<>();

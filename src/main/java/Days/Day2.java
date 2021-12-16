@@ -1,11 +1,15 @@
+package Days;
+
+import Utility.Pair;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.Vector;
 
-public class DayTwo extends Day<Integer> {
+public class Day2 extends Day<Integer> {
 
-    public DayTwo() {
+    public Day2() {
         super("2");
     }
 
@@ -29,7 +33,7 @@ public class DayTwo extends Day<Integer> {
     private Vector<Pair<String, Integer>> getInput() {
         Vector<Pair<String, Integer>> directions = new Vector<>();
         try {
-            File file = new File("src/main/resources/DayTwo.txt");
+            File file = new File("src/main/resources/Day"+ id +".txt");
             Scanner scanner = new Scanner(file);
             while (scanner.hasNextLine()) {
                 String[] split_direction = scanner.nextLine().split(" ");

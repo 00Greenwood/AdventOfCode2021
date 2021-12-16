@@ -1,3 +1,10 @@
+package Days;
+
+import Utility.BigCave;
+import Utility.Cave;
+import Utility.CavePath;
+import Utility.SmallCave;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
@@ -5,9 +12,9 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Vector;
 
-public class DayTwelve extends Day<Integer> {
+public class Day12 extends Day<Integer> {
 
-    public DayTwelve() {
+    public Day12() {
         super("12");
     }
 
@@ -79,7 +86,7 @@ public class DayTwelve extends Day<Integer> {
     private Map<String, Cave> getInput() {
         Map<String, Cave> caves = new HashMap<>();
         try {
-            File file = new File("src/main/resources/DayTwelve.txt");
+            File file = new File("src/main/resources/Day"+ id +".txt");
             Scanner scanner = new Scanner(file);
             while (scanner.hasNextLine()) {
                 createCavePair(caves, scanner.nextLine());

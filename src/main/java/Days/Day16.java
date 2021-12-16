@@ -1,3 +1,8 @@
+package Days;
+
+import Utility.Packet;
+import Utility.Pair;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.math.BigInteger;
@@ -5,9 +10,9 @@ import java.util.Collections;
 import java.util.Scanner;
 import java.util.Vector;
 
-public class DaySixteen extends Day<BigInteger> {
+public class Day16 extends Day<BigInteger> {
 
-    public DaySixteen() {
+    public Day16() {
         super("16");
     }
 
@@ -39,7 +44,7 @@ public class DaySixteen extends Day<BigInteger> {
     private String getInput() {
         String input = "";
         try {
-            File file = new File("src/main/resources/DaySixteen.txt");
+            File file = new File("src/main/resources/Day"+ id +".txt");
             Scanner scanner = new Scanner(file);
             input = scanner.nextLine();
             scanner.close();

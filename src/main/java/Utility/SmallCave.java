@@ -1,4 +1,8 @@
-public class SmallCave extends Cave{
+package Utility;
+
+import Utility.Cave;
+
+public class SmallCave extends Cave {
     public SmallCave(String id) {
         super(id);
     }

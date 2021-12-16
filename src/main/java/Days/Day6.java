@@ -1,3 +1,5 @@
+package Days;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.math.BigInteger;
@@ -5,9 +7,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class DaySix extends Day<BigInteger> {
+public class Day6 extends Day<BigInteger> {
 
-    public DaySix() {
+    public Day6() {
         super("6");
     }
 
@@ -24,7 +26,7 @@ public class DaySix extends Day<BigInteger> {
     private Map<Integer, BigInteger> getInput() {
         Map<Integer, BigInteger> fish = new HashMap<>();
         try {
-            File file = new File("src/main/resources/DaySix.txt");
+            File file = new File("src/main/resources/Day"+ id +".txt");
             Scanner scanner = new Scanner(file).useDelimiter(",");
             while (scanner.hasNext()) {
                 Integer number = Integer.valueOf(scanner.next());
@@ -39,8 +41,8 @@ public class DaySix extends Day<BigInteger> {
     }
 
     private BigInteger runSimulation(Map<Integer, BigInteger> fish, Integer number_of_days) {
-        for (int day = 1; day <= number_of_days ; day++) {
-            BigInteger number_of_new_fish = fish.getOrDefault(0,BigInteger.ZERO);
+        for (int day = 1; day <= number_of_days; day++) {
+            BigInteger number_of_new_fish = fish.getOrDefault(0, BigInteger.ZERO);
             for (int key = 1; key <= 8; key++) {
                 fish.put(key - 1, fish.getOrDefault(key, BigInteger.ZERO));
             }
@@ -48,7 +50,7 @@ public class DaySix extends Day<BigInteger> {
             fish.put(8, number_of_new_fish);
         }
         BigInteger count = BigInteger.ZERO;
-        for (Integer key: fish.keySet()) {
+        for (Integer key : fish.keySet()) {
             count = count.add(fish.get(key));
         }
         return count;

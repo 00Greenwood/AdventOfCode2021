@@ -1,9 +1,11 @@
+package Days;
+
 public abstract class Day<T> implements Runnable {
     protected T solution_one;
     protected T solution_two;
     protected double run_time;
 
-    private String id;
+    protected final String id;
 
     public Day(String id) {
         this.id = id;
@@ -17,7 +19,7 @@ public abstract class Day<T> implements Runnable {
 
     protected abstract void runSolutionTwo();
 
-    protected void printSolutions() {
+    public void printSolutions() {
         System.out.println("Day " + id + ": " + solution_one + ", " + solution_two);
         // System.out.println("Day " + id + ": " + run_time + "s");
     }

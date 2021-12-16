@@ -1,26 +1,28 @@
+import Days.*;
+
 import java.util.Vector;
 
 public class Main {
     public static void main(String[] args) {
         // Create an object for each Day.
         Vector<Day> days = new Vector<Day>();
-        days.add(new DayZero());
-        days.add(new DayOne());
-        days.add(new DayTwo());
-        days.add(new DayThree());
-        days.add(new DayFour());
-        days.add(new DayFive());
-        days.add(new DaySix());
-        days.add(new DaySeven());
-        days.add(new DayEight());
-        days.add(new DayNine());
-        days.add(new DayTen());
-        days.add(new DayEleven());
-        days.add(new DayTwelve());
-        days.add(new DayThirteen());
-        days.add(new DayFourteen());
-        days.add(new DayFifteen());
-        days.add(new DaySixteen());
+        days.add(new Day0());
+        days.add(new Day1());
+        days.add(new Day2());
+        days.add(new Day3());
+        days.add(new Day4());
+        days.add(new Day5());
+        days.add(new Day6());
+        days.add(new Day7());
+        days.add(new Day8());
+        days.add(new Day9());
+        days.add(new Day10());
+        days.add(new Day11());
+        days.add(new Day12());
+        days.add(new Day13());
+        days.add(new Day14());
+        days.add(new Day15());
+        days.add(new Day16());
 
         Vector<Thread> threads = new Vector<>();
         // Create a thread for each day.

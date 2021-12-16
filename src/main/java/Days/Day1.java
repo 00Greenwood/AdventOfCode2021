@@ -1,27 +1,29 @@
+package Days;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.Vector;
 
-public class DayOne extends Day<Integer> {
+public class Day1 extends Day<Integer> {
 
-    public DayOne() {
+    public Day1() {
         super("1");
     }
 
     private Vector<Integer> getTestInput() {
         String test_input = """
-        199
-        200
-        208
-        210
-        200
-        207
-        240
-        269
-        260
-        263
-        """;
+                199
+                200
+                208
+                210
+                200
+                207
+                240
+                269
+                260
+                263
+                """;
 
         Vector<Integer> depths = new Vector<>();
         for (String number : test_input.split("\n")) {
@@ -33,7 +35,7 @@ public class DayOne extends Day<Integer> {
     private Vector<Integer> getInput() {
         Vector<Integer> depths = new Vector<>();
         try {
-            File file = new File("src/main/resources/DayOne.txt");
+            File file = new File("src/main/resources/Day"+ id +".txt");
             Scanner scanner = new Scanner(file);
             while (scanner.hasNextLine()) {
                 depths.add(Integer.valueOf(scanner.nextLine()));

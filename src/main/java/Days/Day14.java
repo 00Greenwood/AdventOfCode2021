@@ -1,3 +1,7 @@
+package Days;
+
+import Utility.Polymer;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.math.BigInteger;
@@ -5,9 +9,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class DayFourteen extends Day<BigInteger> {
+public class Day14 extends Day<BigInteger> {
 
-    public DayFourteen() {
+    public Day14() {
         super("14");
     }
 
@@ -39,7 +43,7 @@ public class DayFourteen extends Day<BigInteger> {
     private Polymer getInput() {
         Polymer polymer = null;
         try {
-            File file = new File("src/main/resources/DayFourteen.txt");
+            File file = new File("src/main/resources/Day"+ id +".txt");
             Scanner scanner = new Scanner(file).useDelimiter("\r\n\r\n");
             polymer = new Polymer(scanner.next(), scanner.next());
             scanner.close();

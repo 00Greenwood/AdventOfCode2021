@@ -1,3 +1,7 @@
+package Days;
+
+import Utility.Pair;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
@@ -6,9 +10,9 @@ import java.util.Queue;
 import java.util.Scanner;
 import java.util.concurrent.LinkedBlockingDeque;
 
-public class DayFifteen extends Day<Integer> {
+public class Day15 extends Day<Integer> {
 
-    public DayFifteen() {
+    public Day15() {
         super("15");
     }
 
@@ -41,7 +45,7 @@ public class DayFifteen extends Day<Integer> {
     private Map<Integer, Map<Integer, Integer>> getInput() {
         Map<Integer, Map<Integer, Integer>> risk_map = new HashMap<>();
         try {
-            File file = new File("src/main/resources/DayFifteen.txt");
+            File file = new File("src/main/resources/Day"+ id +".txt");
             Scanner scanner = new Scanner(file);
             int i = 0;
             while (scanner.hasNextLine()) {

@@ -1,3 +1,5 @@
+package Utility;
+
 public class BigCave extends Cave {
     public BigCave(String id){
         super(id);

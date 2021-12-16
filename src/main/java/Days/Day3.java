@@ -1,11 +1,13 @@
+package Days;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.Vector;
 
-public class DayThree extends Day<Integer> {
+public class Day3 extends Day<Integer> {
 
-    public DayThree() {
+    public Day3() {
         super("3");
     }
 
@@ -34,7 +36,7 @@ public class DayThree extends Day<Integer> {
     private Vector<String> getInput() {
         Vector<String> binary = new Vector<>();
         try {
-            File file = new File("src/main/resources/DayThree.txt");
+            File file = new File("src/main/resources/Day"+ id +".txt");
             Scanner scanner = new Scanner(file);
             while (scanner.hasNextLine()) {
                 binary.add(scanner.nextLine());

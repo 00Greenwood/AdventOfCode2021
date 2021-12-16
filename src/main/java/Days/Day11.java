@@ -1,11 +1,15 @@
+package Days;
+
+import Utility.Octopus;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.Vector;
 
-public class DayEleven extends Day<Integer> {
+public class Day11 extends Day<Integer> {
 
-    public DayEleven() {
+    public Day11() {
         super("11");
     }
 
@@ -37,7 +41,7 @@ public class DayEleven extends Day<Integer> {
     private Vector<Vector<Octopus>> getInput() {
         Vector<Vector<Octopus>> octopuses = new Vector<>();
         try {
-            File file = new File("src/main/resources/DayEleven.txt");
+            File file = new File("src/main/resources/Day"+ id +".txt");
             Scanner scanner = new Scanner(file);
             while (scanner.hasNextLine()) {
                 Vector<Octopus> row = new Vector<>();
@@ -59,22 +63,22 @@ public class DayEleven extends Day<Integer> {
         for (int j = 0; j <= 9; j++) {
             for (int i = 0; i <= 9; i++) {
                 Octopus octopus = octopuses.get(i).get(j);
-                octopus.link(getOrNull(octopuses,i + 1, j - 1));
-                octopus.link(getOrNull(octopuses,i + 1,j));
-                octopus.link(getOrNull(octopuses,i + 1,j + 1));
-                octopus.link(getOrNull(octopuses, i,j + 1));
-                octopus.link(getOrNull(octopuses,i - 1,j + 1));
-                octopus.link(getOrNull(octopuses,i - 1,j));
-                octopus.link(getOrNull(octopuses,i - 1,j - 1));
-                octopus.link(getOrNull(octopuses, i,j - 1));
+                octopus.link(getOrNull(octopuses, i + 1, j - 1));
+                octopus.link(getOrNull(octopuses, i + 1, j));
+                octopus.link(getOrNull(octopuses, i + 1, j + 1));
+                octopus.link(getOrNull(octopuses, i, j + 1));
+                octopus.link(getOrNull(octopuses, i - 1, j + 1));
+                octopus.link(getOrNull(octopuses, i - 1, j));
+                octopus.link(getOrNull(octopuses, i - 1, j - 1));
+                octopus.link(getOrNull(octopuses, i, j - 1));
             }
         }
     }
 
-    private Octopus getOrNull(Vector<Vector<Octopus>> octopuses, Integer x, Integer y){
+    private Octopus getOrNull(Vector<Vector<Octopus>> octopuses, Integer x, Integer y) {
         try {
             return octopuses.get(x).get(y);
-        }catch (IndexOutOfBoundsException ignored){
+        } catch (IndexOutOfBoundsException ignored) {
             return null;
         }
     }
@@ -99,7 +103,7 @@ public class DayEleven extends Day<Integer> {
     private Integer findSynchronization(Vector<Vector<Octopus>> octopuses) {
         int flashes = 0;
         int step = 0;
-        while(flashes < 100) {
+        while (flashes < 100) {
             step++;
             for (Vector<Octopus> row : octopuses) {
                 for (Octopus octopus : row) {

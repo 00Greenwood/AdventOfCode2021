@@ -1,11 +1,16 @@
+package Days;
+
+import Utility.SyntaxComplete;
+import Utility.SyntaxError;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.math.BigInteger;
 import java.util.*;
 
-public class DayTen extends Day<BigInteger> {
+public class Day10 extends Day<BigInteger> {
 
-    public DayTen() {
+    public Day10() {
         super("10");
     }
 
@@ -37,7 +42,7 @@ public class DayTen extends Day<BigInteger> {
     private Vector<Map<Integer, Character>> getInput() {
         Vector<Map<Integer, Character>> syntax_lines = new Vector<>();
         try {
-            File file = new File("src/main/resources/DayTen.txt");
+            File file = new File("src/main/resources/Day"+ id +".txt");
             Scanner scanner = new Scanner(file);
             while (scanner.hasNextLine()) {
                 Map<Integer, Character> map = new TreeMap<>();

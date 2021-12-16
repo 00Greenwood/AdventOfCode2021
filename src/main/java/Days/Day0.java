@@ -1,11 +1,13 @@
+package Days;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.Vector;
 
-public class DayZero extends Day<Integer> {
+public class Day0 extends Day<Integer> {
 
-    public DayZero() {
+    public Day0() {
         super("0");
     }
 
@@ -16,10 +18,10 @@ public class DayZero extends Day<Integer> {
         return inputs;
     }
 
-    private Vector<Integer>  getInput() {
+    private Vector<Integer> getInput() {
         Vector<Integer> input = new Vector<>();
         try {
-            File file = new File("src/main/resources/DayZero.txt");
+            File file = new File("src/main/resources/Day"+ id +".txt");
             Scanner scanner = new Scanner(file);
             while (scanner.hasNextLine()) {
                 input.add(Integer.valueOf(scanner.nextLine()));

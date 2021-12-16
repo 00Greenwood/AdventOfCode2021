@@ -1,12 +1,14 @@
+package Days;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Collections;
 import java.util.Scanner;
 import java.util.Vector;
 
-public class DaySeven extends Day<Integer> {
+public class Day7 extends Day<Integer> {
 
-    public DaySeven() {
+    public Day7() {
         super("7");
     }
 
@@ -22,7 +24,7 @@ public class DaySeven extends Day<Integer> {
     private Vector<Integer> getInput() {
         Vector<Integer> crabs = new Vector<>();
         try {
-            File file = new File("src/main/resources/DaySeven.txt");
+            File file = new File("src/main/resources/Day"+ id +".txt");
             Scanner scanner = new Scanner(file).useDelimiter(",");
             while (scanner.hasNext()) {
                 crabs.add(Integer.valueOf(scanner.next()));

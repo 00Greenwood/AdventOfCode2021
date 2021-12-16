@@ -1,3 +1,8 @@
+package Days;
+
+import Utility.Line;
+import Utility.Pair;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
@@ -5,9 +10,9 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Vector;
 
-public class DayFive extends Day<Integer> {
+public class Day5 extends Day<Integer> {
 
-    public DayFive() {
+    public Day5() {
         super("5");
     }
 
@@ -34,7 +39,7 @@ public class DayFive extends Day<Integer> {
     private Vector<Line> getInput() {
         Vector<Line> lines = new Vector<>();
         try {
-            File file = new File("src/main/resources/DayFive.txt");
+            File file = new File("src/main/resources/Day"+ id +".txt");
             Scanner scanner = new Scanner(file);
             while (scanner.hasNextLine()) {
                 lines.add(new Line(scanner.nextLine()));

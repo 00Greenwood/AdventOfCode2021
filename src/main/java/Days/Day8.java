@@ -1,10 +1,12 @@
+package Days;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 
-public class DayEight extends Day<Integer> {
+public class Day8 extends Day<Integer> {
 
-    public DayEight() {
+    public Day8() {
         super("8");
     }
 
@@ -29,7 +31,7 @@ public class DayEight extends Day<Integer> {
     private Vector<String> getInput() {
         Vector<String> lines = new Vector<>();
         try {
-            File file = new File("src/main/resources/DayEight.txt");
+            File file = new File("src/main/resources/Day"+ id +".txt");
             Scanner scanner = new Scanner(file);
             while (scanner.hasNextLine()) {
                 lines.add(scanner.nextLine());
@@ -100,7 +102,7 @@ public class DayEight extends Day<Integer> {
     }
 
     private Map<Integer, Set<Character>> createEncodeMap(String all_digits) {
-        Map<Integer,  Set<Character>> encode_map = new HashMap<>();
+        Map<Integer, Set<Character>> encode_map = new HashMap<>();
 
         String[] digits = all_digits.split(" ");
         // First iteration, find 1, 4, 7 and 8

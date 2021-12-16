@@ -1,11 +1,15 @@
+package Days;
+
+import Utility.Pair;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.Vector;
 
-public class DayThirteen extends Day<Integer> {
+public class Day13 extends Day<Integer> {
 
-    public DayThirteen() {
+    public Day13() {
         super("13");
     }
 
@@ -48,7 +52,7 @@ public class DayThirteen extends Day<Integer> {
     private void getInput(Vector<Pair<Integer, Integer>> points, Vector<Pair<String, Integer>> folds) {
         Vector<Integer> input = new Vector<>();
         try {
-            File file = new File("src/main/resources/DayThirteen.txt");
+            File file = new File("src/main/resources/Day"+ id +".txt");
             Scanner scanner = new Scanner(file).useDelimiter("\r\n\r\n");
             for (String point : scanner.next().split("\r\n")) {
                 String[] x_and_y = point.split(",");
@@ -111,7 +115,7 @@ public class DayThirteen extends Day<Integer> {
         Vector<Pair<Integer, Integer>> points = new Vector<>();
         Vector<Pair<String, Integer>> folds = new Vector<>();
         getTestInput(points, folds);
-        for (Pair<String, Integer> fold: folds) {
+        for (Pair<String, Integer> fold : folds) {
             fold(points, fold);
         }
         Integer number_of_points = points.size();
@@ -121,7 +125,7 @@ public class DayThirteen extends Day<Integer> {
         Vector<Pair<Integer, Integer>> points = new Vector<>();
         Vector<Pair<String, Integer>> folds = new Vector<>();
         getInput(points, folds);
-        for (Pair<String, Integer> fold: folds) {
+        for (Pair<String, Integer> fold : folds) {
             fold(points, fold);
         }
         solution_two = points.size();
