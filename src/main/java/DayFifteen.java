@@ -69,12 +69,12 @@ public class DayFifteen extends Day<Integer> {
             Pair<Integer, Integer> point = points_checked.poll();
             Integer x = point.first;
             Integer y = point.second;
-            Integer current_total_risk_level = total_risk_map.get(x).get(y);
+            Integer total_risk_level = total_risk_map.get(x).get(y);
 
-            checkAndAddToQueue(risk_map, total_risk_map, new Pair<>(x, y + 1), current_total_risk_level, points_checked);
-            checkAndAddToQueue(risk_map, total_risk_map, new Pair<>(x + 1, y), current_total_risk_level, points_checked);
-            checkAndAddToQueue(risk_map, total_risk_map, new Pair<>(x, y - 1), current_total_risk_level, points_checked);
-            checkAndAddToQueue(risk_map, total_risk_map, new Pair<>(x - 1, y), current_total_risk_level, points_checked);
+            checkAndAddToQueue(risk_map, total_risk_map, new Pair<>(x, y + 1), total_risk_level, points_checked);
+            checkAndAddToQueue(risk_map, total_risk_map, new Pair<>(x + 1, y), total_risk_level, points_checked);
+            checkAndAddToQueue(risk_map, total_risk_map, new Pair<>(x, y - 1), total_risk_level, points_checked);
+            checkAndAddToQueue(risk_map, total_risk_map, new Pair<>(x - 1, y), total_risk_level, points_checked);
         }
 
         return total_risk_map.get(total_risk_map.size() - 1).get(total_risk_map.size() - 1);
