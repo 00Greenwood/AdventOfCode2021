@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.util.Vector;
 
 public class BingoBoard {
-    private Vector<Vector<Pair<Integer, Boolean>>> bingo_board = new Vector<>();
+    private final Vector<Vector<Pair<Integer, Boolean>>> bingo_board = new Vector<>();
     private Integer width = 0;
     private Integer height = 0;
 
