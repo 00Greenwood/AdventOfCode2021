@@ -21,7 +21,7 @@ public abstract class Day<T> implements Runnable {
 
     public void printSolutions() {
         System.out.println("Day " + id + ": " + solution_one + ", " + solution_two);
-        // System.out.println("Day " + id + ": " + run_time + "s");
+        System.out.println("Day " + id + ": " + run_time + "s");
     }
 
     @Override

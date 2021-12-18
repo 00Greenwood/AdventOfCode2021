@@ -1,5 +1,7 @@
 package Utility;
 
+import java.math.BigInteger;
+
 public class SnailNumber {
     public SnailNumber parent = null;
     public Integer regular = null;
@@ -39,9 +41,12 @@ public class SnailNumber {
         this.right.parent = this;
     }
 
-    public SnailNumber(SnailNumber parent, Integer value) {
+    public SnailNumber(SnailNumber parent, Integer regular) {
         this.parent = parent;
-        this.regular = value;
+        this.regular = regular;
+    }
+
+    public SnailNumber() {
     }
 
     private void findAndAddToLeft(Integer regular_on_left) {
@@ -78,7 +83,7 @@ public class SnailNumber {
         on_right.regular += regular_on_right;
     }
 
-    public Boolean reduce(Integer depth) {
+    public Boolean explode(Integer depth) {
         if (depth > 3 && left != null && right != null) {
             // Explode
             findAndAddToLeft(left.regular);
@@ -88,6 +93,10 @@ public class SnailNumber {
             regular = 0;
             return true;
         }
+        return (left != null && left.explode(depth + 1)) || (right != null && right.explode(depth + 1));
+    }
+
+    public Boolean split(Integer depth) {
         if (regular != null && regular >= 10) {
             // Split
             left = new SnailNumber(this, (int) Math.floor(regular / 2.0));
@@ -95,13 +104,18 @@ public class SnailNumber {
             regular = null;
             return true;
         }
-        return (left != null && left.reduce(depth + 1)) || (right != null && right.reduce(depth + 1));
+        return (left != null && left.split(depth + 1)) || (right != null && right.split(depth + 1));
     }
 
     public void reduce() {
-        while (reduce(0)) {
-            System.out.println(toString(0));
-        }
+        boolean has_exploded = false;
+        boolean has_split = false;
+        do {
+            has_exploded = explode(0);
+            if (!has_exploded) {
+                has_split = split(0);
+            }
+        } while (has_exploded || has_split);
     }
 
     public String toString(Integer depth) {
@@ -114,5 +128,16 @@ public class SnailNumber {
         output += right.toString(depth + 1);
         output += depth > 3 ? "}" : "]";
         return output;
+    }
+
+    public Integer magnitude() {
+        if (regular != null) {
+            return regular;
+        }
+        return 3 * left.magnitude() + 2 * right.magnitude();
+    }
+
+    public SnailNumber copy() {
+        return new SnailNumber(null, toString(0));
     }
 }
